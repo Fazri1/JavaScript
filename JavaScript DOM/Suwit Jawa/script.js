@@ -1,3 +1,4 @@
+// Mengacak pilihan komputer
 function getPilihanComputer(){
     const comp = Math.random();
 
@@ -20,8 +21,11 @@ function putar() {
     const imgComputer = document.querySelector('.img-computer');
     const gambar = ['gajah', 'orang', 'semut'];
     let i = 0;
+
+    // mengatur waktu pengacakan gambar selama 100ms atau 0,1 detik
     const waktuMulai = new Date().getTime();
     setInterval(function(){
+        // jika waktunya sudah berlalu selama 1 detik maka pengacakan gambar dihentikan
         if ( new Date().getTime() - waktuMulai > 1000 ) {
             clearInterval;
             return;
@@ -36,6 +40,7 @@ function putar() {
 let scoreP = 0
 let scoreC = 0
 const pilihan = document.querySelectorAll('li img');
+// untuk setiap gambar yang ada di variabel pilihan
 pilihan.forEach(function(pil){
     pil.addEventListener('click', function(){
         const pilihanComputer = getPilihanComputer();
@@ -44,6 +49,7 @@ pilihan.forEach(function(pil){
 
         putar();
 
+        // jika pengacakan gambar selesai, jalankan fungsi 
         setTimeout(function(){
             const imgComputer = document.querySelector('.img-computer');
             imgComputer.setAttribute('src', 'img/' + pilihanComputer + '.png');
@@ -61,8 +67,6 @@ pilihan.forEach(function(pil){
                 scoreC = scoreC + 1;
                 scoreComputer.innerHTML = scoreC;
             }
-            console.log(scoreP);
-            console.log(scoreC);
         }, 1000)
         
     });
