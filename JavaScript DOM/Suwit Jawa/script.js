@@ -33,6 +33,8 @@ function putar() {
 
 }
 
+let scoreP = 0
+let scoreC = 0
 const pilihan = document.querySelectorAll('li img');
 pilihan.forEach(function(pil){
     pil.addEventListener('click', function(){
@@ -48,8 +50,20 @@ pilihan.forEach(function(pil){
     
             const info = document.querySelector('.info');
             info.innerHTML = hasil;
-            
-        }, 1000)
 
+            const scoreComputer = document.querySelector('.score-computer');
+            const scorePlayer = document.querySelector('.score-player');
+            
+            if ( hasil == 'MENANG!' ) {
+                scoreP = scoreP + 1;
+                scorePlayer.innerHTML = scoreP;
+            } else if ( hasil == 'KALAH!' ){
+                scoreC = scoreC + 1;
+                scoreComputer.innerHTML = scoreC;
+            }
+            console.log(scoreP);
+            console.log(scoreC);
+        }, 1000)
+        
     });
 });
